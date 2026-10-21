@@ -1,0 +1,4 @@
+FLASK_APP=main_for_paping_tcptrace
+FLASK_DEBUG=1
+FLASK_RUN_PORT=5020
+FLASK_RUN_HOST=0.0.0.0

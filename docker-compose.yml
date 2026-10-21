@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER}:${MYSQL_APP_PASSWORD:?copy .env.example to .env}@${MYSQL_HOST}:3306/${MYSQL_DATABASE}
+    networks: [default, db]
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend_webtcping
+    ports:
+      - "${FRONTEND_PORT:-5435}:80"
+    depends_on: [backend]
+    restart: unless-stopped
+
+networks:
+  db:
+    name: netdiag_default
+    external: true
